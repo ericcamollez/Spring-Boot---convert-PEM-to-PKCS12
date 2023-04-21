@@ -35,7 +35,7 @@ CERTIFICATES
 
 5. Run the keyTool_convert_PEM_to_PKCS12.bat file, when running the CMD file, prompt will ask for password, fill in the same password you typed in the line 
    server.ssl.key-store-password:testpassword01
-	
-6. To access the application via browser type https://www.mysite.com.br/8080/application, the first time a message will appear informing that the site is not secure, click the "advanced" button and then click "Go to localhost (not secure)".
+6. Create a folder called "ssl" and put the file keystore.p12 on this folder.	
+7. To access the application via browser type https://www.mysite.com.br/8080/application, the first time a message will appear informing that the site is not secure, click the "advanced" button and then click "Go to localhost (not secure)".
 Once the application opens, it will still show as an unsafe site, do the following: (browser tested - Google Chrome)
 - Click on the icon where the red button written "Not secure" is and click on the "Enable warnings" option, as soon as you click, the padlock will appear showing that the connection is in HTTPS
