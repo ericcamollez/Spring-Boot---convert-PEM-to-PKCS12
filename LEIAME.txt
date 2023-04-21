@@ -1,0 +1,41 @@
+-------------------------------------------------- ----------------------------------------------
+CERTIFICATES
+-------------------------------------------------- ----------------------------------------------
+
+1. Inside your application.properties, paste following parameters below:
+
+	################################################### 
+	# Custom port to run Tomcat via Springboot
+	server.port=8080
+	################################################### 
+	# server.port: 8443
+	security.require-ssl=true
+	###################################################
+	# Local development path - uncomment this line
+	# server.ssl.key-store:classpath:ssl/keystore.p12
+
+	# Path to server - uncomment this line
+	server.ssl.key-store:file:ssl/keystore.p12
+	###################################################
+	# Password - The same as you entered when converting the PEM file to PKCS12
+	server.ssl.key-store-password: testpassword01
+	################################################### 
+	# Type of certificate
+	server.ssl.keyStoreType: PKCS12
+	################################################### 
+	# Server alias
+	server.ssl.keyAlias: tomcat
+	################################################### 
+
+2. Generate the certificates using Let's Encrypt with the domain www.mysite.com.br
+3. Convert PEM certificates to PKCS12 as Spring Boot does not support PEM
+4. Take the generated -chain and -key files with a .pem extension and place these files in the same directory as your keyTool_convert_PEM_to_PKCS12.bat 
+   mysite.com.br-chain.pem
+   mysite.com.br-key.pem
+
+5. Run the keyTool_convert_PEM_to_PKCS12.bat file, when running the CMD file, prompt will ask for password, fill in the same password you typed in the line 
+   server.ssl.key-store-password:testpassword01
+	
+6. To access the application via browser type https://www.mysite.com.br/8080/application, the first time a message will appear informing that the site is not secure, click the "advanced" button and then click "Go to localhost (not secure)".
+Once the application opens, it will still show as an unsafe site, do the following: (browser tested - Google Chrome)
+- Click on the icon where the red button written "Not secure" is and click on the "Enable warnings" option, as soon as you click, the padlock will appear showing that the connection is in HTTPS
